@@ -213,14 +213,14 @@
 {% macro article_info(article) %}
   <span id="article_info">
     <a class="label label-primary" 
-      href="{{ genurl( '/category/' + article.category|string + '.html') }}">
+      href="{{ genurl( '/category/' + article.category.slug|string + '.html') }}">
       {{- article.category -}}
     </a>
     {% if article.tags %}
       <b> · </b>
       {% for tag in article.tags %}
         <a class="label label-primary" 
-          href="{{ genurl( '/tag/' + tag|string + '.html' ) }}">
+          href="{{ genurl( '/tag/' + tag.slug|string + '.html' ) }}">
           {{- tag -}}
         </a>
       {% endfor %}
@@ -244,7 +244,7 @@
       {% if AUTHORS[article.author] %}
         {% set author_url = AUTHORS[article.author] %}
       {% else %}
-        {% set author_url = ["/author/",article.author,".html"]|join %}
+        {% set author_url = ["/author/",article.author.slug,".html"]|join %}
       {% endif %}
     {% endif %}
     <a href="{{ genurl( author_url ) }}">{{ article.author }}</a>
