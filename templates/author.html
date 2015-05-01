@@ -1,5 +1,5 @@
 {% set name = author %}
-{% set link = ["author/",author,".html"]|join %}
+{% set link = ["author/",author.slug,".html"]|join %}
 {% extends "base.html" %}
 
 {% block content %}
